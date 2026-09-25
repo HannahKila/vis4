@@ -1,1 +1,16 @@
 
+      <style>
+        #navbar {
+            background-color: #333;
+            color: white;
+            height: 150px;
+            width: 100%;
+            text-align: center;
+        }
+
+        #main-content {
+            background-color: #f4f4f4;
+            height: calc(100vh - 150px);
+            padding: 20px;
+        }
+    </style>
