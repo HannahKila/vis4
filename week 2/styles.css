@@ -11,10 +11,10 @@
     background-color: #f4f4f4;
     height: calc(100vh - 150px);
     padding: 20px;
-
     display: flex;
     flex-direction: row;
 }
+
 .sidebar {
     width: 400px;
 }
@@ -22,8 +22,8 @@
 .content {
     flex: 1;
 }
-      @media (max-width: 800px) {
-    .sidebar {
+@media (max-width: 800px) {
+      .sidebar {
         width: 200px;
     }
 }
