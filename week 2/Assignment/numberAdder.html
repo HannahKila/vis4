@@ -1,197 +1,196 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hannah Jiang's Number Adder</title>
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+	<head>
+	  <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Hannah Jiang's Number Adder</title>
+	  <style>
+	    * {
+	      box-sizing: border-box;
+	    }
 
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #f3f0eb;
-      color: #292929;
-    }
+	    body {
+	      margin: 0;
+	      font-family: 'Arial', sans-serif;
+	      background-color: #f3f0eb;
+	      color: #292929;
+	    }
 
-    /* Header */
-    #header {
-      background-color: #0033FF;
-      color: #ffffff;
-      padding: 35px;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      flex-wrap: wrap;
-      text-align: center;
-    }
+	    /* Header */
+	    #header {
+	      background-color: #0033FF;
+	      color: #ffffff;
+	      padding: 35px;
+	      display: flex;
+	      justify-content: space-around;
+	      align-items: center;
+	      flex-wrap: wrap;
+	      text-align: center;
+	    }
 
-    #header h1 {
-      font-size: 32px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
+	    #header h1 {
+	      font-size: 32px;
+	      text-transform: uppercase;
+	      letter-spacing: 2px;
+	    }
 
-    #header h4 {
-      font-weight: 400;
-      color: #ffffff;
-    }
+	    #header h4 {
+	      font-weight: 400;
+	      color: #ffffff;
+	    }
 
-    /* Main layout */
-    .layout {
-      display: flex;
-      gap: 25px;
-      padding: 35px;
-      min-height: 65vh;
-    }
+	    /* Main layout */
+	    .layout {
+	      display: flex;
+	      gap: 25px;
+	      padding: 35px;
+	      min-height: 65vh;
+	    }
 
-    /* Sidebar */
-    #sidebar {
-      background-color: #F2E6EE;
-      flex: 1;
-      padding: 30px;
-      border-radius: 16px;
-      text-align: center;
-    }
+	    /* Sidebar */
+	    #sidebar {
+	      background-color: #F2E6EE;
+	      flex: 1;
+	      padding: 30px;
+	      border-radius: 16px;
+	      text-align: center;
+	    }
 
-    #sidebar h3 {
-      text-transform: uppercase;
-      color: #283c35;
-    }
+	    #sidebar h3 {
+	      text-transform: uppercase;
+	      color: #283c35;
+	    }
 
-    #resultId {
-      font-size: 64px;
-      font-weight: bold;
-      color: #283c35;
-      margin-top: 20px;
-    }
+	    #resultId {
+	      font-size: 64px;
+	      font-weight: bold;
+	      color: #283c35;
+	      margin-top: 20px;
+	    }
 
-    /* Main content */
-    #main {
-      background-color: #ffffff;
-      flex: 3;
-      padding: 35px;
-      border-radius: 16px;
-      text-align: center;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
-    }
+	    /* Main content */
+	    #main {
+	      background-color: #ffffff;
+	      flex: 3;
+	      padding: 35px;
+	      border-radius: 16px;
+	      text-align: center;
+	      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+	    }
 
-    #main h3 {
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 35px;
-    }
+	    #main h3 {
+	      text-transform: uppercase;
+	      letter-spacing: 2px;
+	      margin-bottom: 35px;
+	    }
 
-    .button-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
+	    .button-container {
+	      display: flex;
+	      justify-content: center;
+	      align-items: center;
+	      flex-wrap: wrap;
+	      gap: 15px;
+	    }
 
-    button {
-      padding: 16px 25px;
-      border: none;
-      border-radius: 10px;
-      background-color: #977DFF;
-      color: white;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+	    button {
+	      padding: 16px 25px;
+	      border: none;
+	      border-radius: 10px;
+	      background-color: #977DFF;
+	      color: white;
+	      font-size: 18px;
+	      font-weight: bold;
+	      cursor: pointer;
+	      transition: 0.2s;
+	    }
 
-    button:hover {
-      background-color: #0033ff;
-      transform: translateY(-3px);
-    }
+	    button:hover {
+	      background-color: #0033ff;
+	      transform: translateY(-3px);
+	    }
 
-    #resetBtn {
-      background-color: #bc775e;
-    }
+	    #resetBtn {
+	      background-color: #6700a3;
+	    }
 
-    #resetBtn:hover {
-      background-color: #98553e;
-    }
+	    #resetBtn:hover {
+	      background-color: #98553e;
+	    }
 
-    @media (max-width: 650px) {
-      .layout {
-        flex-direction: column;
-        padding: 20px;
-      }
+	    @media (max-width: 650px) {
+	      .layout {
+	        flex-direction: column;
+	        padding: 20px;
+	      }
 
-      #header {
-        flex-direction: column;
-      }
-    }
-  </style>
-</head>
+	      #header {
+	        flex-direction: column;
+	      }
+	    }
+	  </style>
+	</head>
 
-<body>
+	<body>
 
-  <!-- Header DIV -->
-  <div id="header">
-    <h1>NUMBER ADDER</h1>
-    <h4>Digital Counter</h4>
-    <h4>Interactive JavaScript</h4>
-    <h4>Creative Coding</h4>
-  </div>
+	  <!-- Header DIV -->
+	  <div id="header">
+	    <h1>NUMBER ADDER</h1>
+	    <h4>Digital Counter</h4>
+	    <h4>Interactive JavaScript</h4>
+	    <h4>Creative Coding</h4>
+	  </div>
 
-  <div class="layout">
+	  <div class="layout">
 
-    <!-- Sidebar DIV -->
-    <div id="sidebar">
-      <h3>Current Result</h3>
-      <p id="resultId">0</p>
-    </div>
+	    <!-- Sidebar DIV -->
+	    <div id="sidebar">
+	      <h3>Current Result</h3>
+	      <p id="resultId">0</p>
+	    </div>
 
-    <!-- Main Content DIV -->
-    <div id="main">
-      <h3>Control Center</h3>
+	    <!-- Main Content DIV -->
+	    <div id="main">
+	      <h3>Control Center</h3>
 
-      <div class="button-container">
-        <button id="minusTwoBtn">-2</button>
-        <button id="minusOneBtn">-1</button>
-        <button id="plusOneBtn">+1</button>
-        <button id="plusTwoBtn">+2</button>
-        <button id="resetBtn">Reset</button>
-      </div>
-    </div>
+	      <div class="button-container">
+	        <button id="minusTwoBtn">-2</button>
+	        <button id="minusOneBtn">-1</button>
+	        <button id="plusOneBtn">+1</button>
+	        <button id="plusTwoBtn">+2</button>
+	        <button id="resetBtn">Reset</button>
+	      </div>
+	    </div>
 
-  </div>
+	  </div>
 
-  <script>
-    var total = 0;
+		  <script>
+		    var total = 0;
 
-    document.getElementById("minusTwoBtn").addEventListener("click", function() {
-      total = total - 2;
-      document.querySelector("#resultId").innerHTML = total;
-    });
+		    document.getElementById("minusTwoBtn").addEventListener("click", function() {
+		      total = total - 2;
+		      document.querySelector("#resultId").innerHTML = total;
+		    });
 
-    document.getElementById("minusOneBtn").addEventListener("click", function() {
-      total = total - 1;
-      document.querySelector("#resultId").innerHTML = total;
-    });
+		    document.getElementById("minusOneBtn").addEventListener("click", function() {
+		      total = total - 1;
+		      document.querySelector("#resultId").innerHTML = total;
+		    });
 
-    document.getElementById("plusOneBtn").addEventListener("click", function() {
-      total = total + 1;
-      document.querySelector("#resultId").innerHTML = total;
-    });
+		    document.getElementById("plusOneBtn").addEventListener("click", function() {
+		      total = total + 1;
+		      document.querySelector("#resultId").innerHTML = total;
+		    });
 
-    document.getElementById("plusTwoBtn").addEventListener("click", function() {
-      total = total + 2;
-      document.querySelector("#resultId").innerHTML = total;
-    });
+		    document.getElementById("plusTwoBtn").addEventListener("click", function() {
+		      total = total + 2;
+		      document.querySelector("#resultId").innerHTML = total;
+		    });
 
-    document.getElementById("resetBtn").addEventListener("click", function() {
-      total = 0;
-      document.querySelector("#resultId").innerHTML = total;
-    });
-  </script>
+		    document.getElementById("resetBtn").addEventListener("click", function() {
+		      total = 0;
+		      document.querySelector("#resultId").innerHTML = total;
+		    });
+		  </script>
 
-</body>
+	</body>
 </html>
