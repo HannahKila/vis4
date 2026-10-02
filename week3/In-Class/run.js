@@ -42,6 +42,8 @@ console.log(testScope());
 
 ++++++++++++++++++++
 
+*/
+
 let numbers=[1,43,32,5,3,23889,352];
 
 for (var i = 0; i < numbers.length; i++) {
@@ -52,8 +54,6 @@ for (var i = 0; i < numbers.length; i++) {
 		console.log(numbers[i] +"is odd");
 	}
 }
-
-*/
 
 
 
