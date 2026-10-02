@@ -1,4 +1,4 @@
-let name = "John";
+/*let name = "John";
 let age = 30;
 let hobbies = ["eating","drinking","singing","joking"];
 
@@ -14,3 +14,27 @@ let person = {
 	height: 185,
 }
 console.log(person)
+*/
+
+let age=25;
+
+function calculateAgeInDays(age){
+	return age*365;
+}
+
+console.log(calculateAgeInDays(age));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
