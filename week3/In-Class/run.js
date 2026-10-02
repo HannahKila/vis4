@@ -40,18 +40,30 @@ console.log(testScope());
 
 //testScope();
 
-*/
+++++++++++++++++++++
 
 let numbers=[1,43,32,5,3,23889,352];
 
 for (var i = 0; i < numbers.length; i++) {
 
-	if (numbers[i]%2 == 0) {	//%就是除以二之后给出余一还是零.是一个判断奇偶数的计算方法
+	if (numbers[i]%2 == 0) {	//%除以
 		console.log(numbers[i] +"is even");
 	} else {
 		console.log(numbers[i] +"is odd");
 	}
 }
+
+*/
+
+
+
+
+
+
+
+
+
+
 
 
 
