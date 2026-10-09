@@ -1,1 +1,169 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Breathe Trainer</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px 28px;
+      background: #ffffff;
+      color: #111111;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    h1 {
+      margin: 0 0 34px;
+      font-size: 26px;
+      font-weight: 400;
+      letter-spacing: -0.5px;
+    }
+
+    /* Chart */
+    .chart-section {
+      margin-bottom: 42px;
+    }
+
+    .section-title {
+      margin: 0 0 16px;
+      font-size: 19px;
+      font-weight: 400;
+    }
+
+    .chart-wrapper {
+      width: 100%;
+      position: relative;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 345px;
+    }
+
+    /* Metric cards */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px 24px;
+    }
+
+    .metric-card {
+      height: 147px;
+      padding: 12px 18px;
+      background: #e4e4e4;
+      border-radius: 11px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .metric-label {
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+    .metric-value {
+      margin: 0 0 47px;
+      text-align: center;
+      font-size: 19px;
+      font-weight: 400;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .metric-value span {
+      font-size: 14px;
+    }
+
+    /* Small screens */
+    @media (max-width: 380px) {
+      body {
+        padding: 30px 20px;
+      }
+
+      canvas {
+        height: 290px;
+      }
+
+      .metrics {
+        gap: 18px 14px;
+      }
+
+      .metric-card {
+        height: 130px;
+        padding: 12px;
+      }
+
+      .metric-value {
+        margin-bottom: 38px;
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+
+    <h1>Breathe Trainer</h1>
+
+    <section class="chart-section">
+      <h2 class="section-title">stability</h2>
+
+      <div class="chart-wrapper">
+        <canvas id="breathChart"
+                role="img"
+                aria-label="Real-time breath stability chart">
+        </canvas>
+      </div>
+    </section>
+
+    <section class="metrics">
+
+      <article class="metric-card">
+        <div class="metric-label">length</div>
+        <p class="metric-value">
+          <span id="lengthValue">15</span>s
+        </p>
+      </article>
+
+      <article class="metric-card">
+        <div class="metric-label">pressure</div>
+        <p class="metric-value">
+          <span id="pressureValue">0.7</span><span>kPa</span>
+        </p>
+      </article>
+
+      <article class="metric-card">
+        <div class="metric-label">fluctuate</div>
+        <p class="metric-value" id="fluctuateValue">±0.5</p>
+      </article>
+
+      <article class="metric-card">
+        <div class="metric-label">stability</div>
+        <p class="metric-value">
+          <span id="stabilityValue">86</span><span>%</span>
+        </p>
+      </article>
+
+    </section>
+
+  </main>
+
+  <script src="index.js"></script>
+</body>
+</html>
