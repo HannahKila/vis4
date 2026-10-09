@@ -3,6 +3,7 @@
 	<head>
 	  <meta charset="UTF-8">
 	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 	  <title>Hannah Jiang's Number Adder</title>
 	  <style>
 	    * {
@@ -143,10 +144,13 @@
 	  <div class="layout">
 
 	    <!-- Sidebar DIV -->
-	    <div id="sidebar">
-	      <h3>Current Result</h3>
-	      <p id="resultId">0</p>
-	    </div>
+		<div id="sidebar">
+		  <h3>Current Result</h3>
+		  <p id="resultId">0</p>
+
+		  <h3>Operation History</h3>
+		  <ul id="historyList"></ul>
+		</div>
 
 	    <!-- Main Content DIV -->
 	    <div id="main">
@@ -163,34 +167,7 @@
 
 	  </div>
 
-		  <script>
-		    var total = 0;
-
-		    document.getElementById("minusTwoBtn").addEventListener("click", function() {
-		      total = total - 2;
-		      document.querySelector("#resultId").innerHTML = total;
-		    });
-
-		    document.getElementById("minusOneBtn").addEventListener("click", function() {
-		      total = total - 1;
-		      document.querySelector("#resultId").innerHTML = total;
-		    });
-
-		    document.getElementById("plusOneBtn").addEventListener("click", function() {
-		      total = total + 1;
-		      document.querySelector("#resultId").innerHTML = total;
-		    });
-
-		    document.getElementById("plusTwoBtn").addEventListener("click", function() {
-		      total = total + 2;
-		      document.querySelector("#resultId").innerHTML = total;
-		    });
-
-		    document.getElementById("resetBtn").addEventListener("click", function() {
-		      total = 0;
-		      document.querySelector("#resultId").innerHTML = total;
-		    });
-		  </script>
+	<script src="interface.js"></script>
 
 	</body>
 </html>
