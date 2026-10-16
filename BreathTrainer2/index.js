@@ -8,10 +8,17 @@ const connectionStatus = document.getElementById("connectionStatus");
 const readings = [];
 const MAX_POINTS = 150;
 
+// Smoothness settings
+const SMOOTHING = 0.05;
+const DEAD_ZONE = 0.07; // volts
+const BASELINE = 2.5;   // approximate zero-pressure voltage
+
+let filteredVoltage = null;
+
 let port;
 let startTime = null;
 
-function drawChart() {
+/*function drawChart() {
   const rect = canvas.getBoundingClientRect();
   const dpr = window.devicePixelRatio || 1;
 
@@ -67,6 +74,81 @@ function drawChart() {
 
   ctx.stroke();
 }
+  */
+
+function drawChart() {
+  const rect = canvas.getBoundingClientRect();
+  if (rect.width === 0 || rect.height === 0) return;
+
+  const dpr = window.devicePixelRatio || 1;
+
+  canvas.width = rect.width * dpr;
+  canvas.height = rect.height * dpr;
+
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const width = rect.width;
+  const height = rect.height;
+  const padding = 15;
+
+  ctx.clearRect(0, 0, width, height);
+
+  // Background
+  ctx.fillStyle = "#f7f7f7";
+  ctx.fillRect(0, 0, width, height);
+
+  // Grid lines
+  ctx.strokeStyle = "#dddddd";
+  ctx.lineWidth = 1;
+
+  for (let i = 1; i < 5; i++) {
+    const y = (height / 5) * i;
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(width, y);
+    ctx.stroke();
+  }
+
+  if (!readings || readings.length < 2) return;
+
+  const values = readings.filter(Number.isFinite);
+  if (values.length < 2) return;
+
+  const minValue = Math.min(...values);
+  const maxValue = Math.max(...values);
+  const range = Math.max(maxValue - minValue, 0.05);
+
+  const points = values.map((value, index) => ({
+    x: (index / Math.max(MAX_POINTS - 1, 1)) * width,
+    y: height - padding -
+      ((value - minValue) / range) * (height - padding * 2)
+  }));
+
+  // Smooth curve
+  ctx.strokeStyle = "#111111";
+  ctx.lineWidth = 2;
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  ctx.beginPath();
+  ctx.moveTo(points[0].x, points[0].y);
+
+  for (let i = 1; i < points.length - 1; i++) {
+    const midX = (points[i].x + points[i + 1].x) / 2;
+    const midY = (points[i].y + points[i + 1].y) / 2;
+
+    ctx.quadraticCurveTo(
+      points[i].x,
+      points[i].y,
+      midX,
+      midY
+    );
+  }
+
+  const last = points[points.length - 1];
+  ctx.lineTo(last.x, last.y);
+  ctx.stroke();
+}
+
 
 async function connectArduino() {
   if (!("serial" in navigator)) {
@@ -97,20 +179,38 @@ async function connectArduino() {
       buffer = lines.pop();
 
       for (const line of lines) {
-        const voltage = Number(line.trim());
+     
+const voltage = Number(line.trim());
 
-        if (line.trim() !== "" && Number.isFinite(voltage)) {
-          readings.push(voltage);
+if (line.trim() !== "" && Number.isFinite(voltage)) {
 
-          if (readings.length > MAX_POINTS) {
-            readings.shift();
-          }
+  // 1. Low-pass filter: reduce rapid fluctuations
+  if (filteredVoltage === null) {
+    filteredVoltage = voltage;
+  } else {
+    filteredVoltage += SMOOTHING * (voltage - filteredVoltage);
+  }
 
-          drawChart();
+  // 2. Remove small fluctuations around baseline
+  let displayVoltage = filteredVoltage;
+  const deviation = filteredVoltage - BASELINE;
 
-          document.getElementById("lengthValue").textContent =
-            ((Date.now() - startTime) / 1000).toFixed(1);
-        }
+  if (Math.abs(deviation) < DEAD_ZONE) {
+    displayVoltage = BASELINE;
+  }
+
+  readings.push(displayVoltage);
+
+  if (readings.length > MAX_POINTS) {
+    readings.shift();
+  }
+
+  drawChart();
+
+  document.getElementById("lengthValue").textContent =
+    ((Date.now() - startTime) / 1000).toFixed(1);
+}
+
       }
     }
   } catch (error) {
