@@ -178,9 +178,10 @@ async function connectArduino() {
       const lines = buffer.split(/\r?\n/);
       buffer = lines.pop();
 
-      for (const line of lines) {
-     
-const voltage = Number(line.trim());
+    for (const line of lines) {
+  const voltage = Number(line.trim());
+  console.log("Arduino data:", line, voltage);
+  navigator.serial.getPorts().then(ports => console.log(ports.length, ports))
 
 if (line.trim() !== "" && Number.isFinite(voltage)) {
 
