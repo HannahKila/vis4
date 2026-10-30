@@ -1,1 +1,22 @@
+MPXV7002DP Breakout Pressure Sensor Board Transducer APM2.5 Electric Components Pressure Sensor Used for pressure sensing and vacuum sensing
 
++++
+Provide an accurate, high-level analog output. The product can provide an accurate, high-level analog output proportional to the applied pressure.
+Pressure up to 7kPa through each port. This series allows measuring pressure up to 7kPa through each port, both for pressure sensing and vacuum sensing
+Series is specifically 2.5V MPXV7002 is designed to measure positive and negative pressure. In addition, the offset of this series is specifically 2.5V instead of the traditional 0V.
+
++++
+port: GND;+5V;ANALOG
+
++++
+Specification:
+Item Type: pressure sensorWithstand Pressure: -0.3---0.3psi
+Output Voltage: DC 0.5-4.5V
+Material: Synthetic cardboard
+Package List:
+1 x Pressure Sensor
+1 x Connecting Wire
+
++++
+Source: Amazon 
+price: 32.53$
